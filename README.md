@@ -214,7 +214,9 @@ with:
 Now click around, and your urls should be pretty! 
 
 http://localhost:8000/
+
 http://localhost:8000/about
+
 http://localhost:8000/contact
 
 The $location service will automatically fallback to the hashbang method for browsers that do not support the HTML5 History API.
