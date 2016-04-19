@@ -79,15 +79,14 @@ Inside of each page, add a {{ message }} declaration, to show a message, along w
 ngView is a directive that complements the $route service by including the rendered template of the current route into the main layout (index.html) file. 
 
 Change the main div to the following (we’re also removing the ng-controller directive!)
-<pre><code>
 <div id="main">
     <ng-view></ng-view>
 </div>
-<pre><code>
+
 OR
-<pre><code>
+
 <ng-view></ng-view>
-<pre><code>
+
 ##ngRoute
 In order to finish wiring up our JavaScript, we need to inject the ngRoute into our applicaiton!
 
@@ -101,7 +100,7 @@ var app = angular.module('myApp', ['ngRoute']);
 
 ##Controllers
 We’re going to make one controller for each page. Instead of wiring the controllers up using ng-controller, we’ll use our routes configuration to do it. We’ll get to that afterwards.
-<pre><code>
+
 app.controller(‘MainController’, function($scope) {
     $scope.message = 'Welcome to the home page!';
 });
@@ -113,7 +112,6 @@ app.controller('aboutCtrl', function($scope) {
 app.controller('contactCtrl', function($scope) {
     $scope.message = 'Welcome to the contact page!';
 });
-<pre><code>
 
 ##app.config
 And finally, to get everything working together we’ll use app.config.
