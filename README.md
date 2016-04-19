@@ -148,26 +148,28 @@ http://localhost:8000/#/contact
 ##base url
 To enable pretty urls you have to turn on HTML5 mode. It requires a new element on the page, called base. This serves as a reference point for angular when setting up the URLs. In the head of the document you need to add the <base href="/"> element:
 
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    …
-    <base href="/">
-</head>
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        …
+        <base href="/">
+    </head>
 
 ##$locationProvider
 Now we need to inject $locationProvider into our config function:
 
 Change 
-…   .config(function($routeProvider) {   …
+
+    .config(function($routeProvider) {   …
 
 To:
-…   .config(function($routeProvider, $locationProvider) {   …
+
+    .config(function($routeProvider, $locationProvider) {   …
 
 And add the following to the config function:
 
-$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
 
 The final config looks like this:
