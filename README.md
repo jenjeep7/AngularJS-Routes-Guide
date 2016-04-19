@@ -96,28 +96,26 @@ Add the following script:
 
 Now inject it into your application. Add ‘ngRoute’ to your angular module:
 
-var app = angular.module('myApp', ['ngRoute']);
+    var app = angular.module('myApp', ['ngRoute']);
 
 ##Controllers
 We’re going to make one controller for each page. Instead of wiring the controllers up using ng-controller, we’ll use our routes configuration to do it. We’ll get to that afterwards.
 
-app.controller(‘MainController’, function($scope) {
-    $scope.message = 'Welcome to the home page!';
-});
-
-app.controller('aboutCtrl', function($scope) {
-    $scope.message = 'Welcome to the about page!';
-});
-
-app.controller('contactCtrl', function($scope) {
-    $scope.message = 'Welcome to the contact page!';
-});
+    app.controller(‘MainController’, function($scope) {
+        $scope.message = 'Welcome to the home page!';
+    });
+    app.controller('aboutCtrl', function($scope) {
+        $scope.message = 'Welcome to the about page!';
+    });
+    app.controller('contactCtrl', function($scope) {
+        $scope.message = 'Welcome to the contact page!';
+    });
 
 ##app.config
 And finally, to get everything working together we’ll use app.config.
 
-app.config(function($routeProvider) {
-        $routeProvider
+    app.config(function($routeProvider) {
+            $routeProvider
 
             // route for the home page
             .when('/', {
