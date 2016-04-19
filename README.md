@@ -8,45 +8,44 @@ Let’s start off with some HTML, with no content in the body.
 
 index.html
 
-<!doctype html>
-<html ng-app="myApp">
-  <head>
-    <title>My Angular App</title>
-    <script src="vendor/angular/angular.min.js"></script>
-  </head>
-  <body>
-  </body>
-</html>
+    <!doctype html>
+    <html ng-app="myApp">
+      <head>
+        <title>My Angular App</title>
+        <script src="vendor/angular/angular.min.js"></script>
+      </head>
+      <body>
+      </body>
+    </html>
+    
 ngApp
 Notice that we’ve added “ng-app” inside of our html tag again. This will be the name of our application in our JavaScript code. 
 
-var app = angular.module('myApp', []);
-
-
+    var app = angular.module('myApp', []);
 
 ##Review: Controller
 Let’s add a controller named “mainCtrl” and pass in the $scope variable. This allows us to add variables to the scope of the current controller. 
 
-app.controller(‘MainController’, function($scope) {
-        $scope.message = 'This is some sweet data from the controller!';
-});
+    app.controller(‘MainController’, function($scope) {
+            $scope.message = 'This is some sweet data from the controller!';
+    });
 
 We have to add the ng-controller declaration to the app, and then we have access to that scope’s variables. Let’s do that and add an angular expressions.
 
-<div id="main" ng-controller="MainController">
-        {{ message }}
-</div>
+    <div id="main" ng-controller="MainController">
+            {{ message }}
+    </div>
 
 Let’s change this over to the controllerAs syntax
 
-app.controller(‘MainController’, function() {
-  var vm = this;
-        vm.message = 'This is some sweet data from the controller!';
-});
+    app.controller(‘MainController’, function() {
+      var vm = this;
+      vm.message = 'This is some sweet data from the controller!';
+    });
 
-<div id="main" ng-controller="MainController as main">
-        {{ main.message }}
-</div>
+    <div id="main" ng-controller="MainController as main">
+            {{ main.message }}
+    </div>
 
 ##Injecting Pages into the Main Layout
 Angular allows us to build SPAs really easily by allowing us to inject pages right into our content. We’re going to refactor what we have so far to be a “layout” and create three new pages to serve as content that is swapped out dynamically. There are no page refreshes needed!
@@ -54,11 +53,11 @@ Angular allows us to build SPAs really easily by allowing us to inject pages rig
 Creating the navigation bar
 For our demonstration purposes, we’re going to create a UL with three list items, each will be a link to a url that doesn’t exist yet. We’re going to use Angular’s syntax for navigation, which uses a “#” followed by the page location.
 
-<ul>
-     <li><a href="#/"> Home </li>
-     <li><a href="#about"> About </li>
-     <li><a href="#contact"> Contact </li>
-</ul>
+    <ul>
+         <li><a href="#/"> Home </li>
+         <li><a href="#about"> About </li>
+         <li><a href="#contact"> Contact </li>
+    </ul>
 
 ##Creating the directory
 Create a new folder called “pages” and add a home, about and contact page to each one.
@@ -70,8 +69,8 @@ Create a new folder called “pages” and add a home, about and contact page to
 
 Inside of each page, add a {{ message }} declaration, to show a message, along with a page name.
 
-<h1>Home</h1>
-<p>{{ message }} </p>
+    <h1>Home</h1>
+    <p>{{ message }} </p>
 
 (repeat for each page)
 
@@ -79,9 +78,10 @@ Inside of each page, add a {{ message }} declaration, to show a message, along w
 ngView is a directive that complements the $route service by including the rendered template of the current route into the main layout (index.html) file. 
 
 Change the main div to the following (we’re also removing the ng-controller directive!)
-<div id="main">
-    <ng-view></ng-view>
-</div>
+
+    <div id="main">
+        <ng-view></ng-view>
+    </div>
 
 OR
 
@@ -174,41 +174,42 @@ $locationProvider.html5Mode(true);
 
 The final config looks like this:
 
-.config(function($routeProvider, $locationProvider) {
+    .config(function($routeProvider, $locationProvider) {
 
-        $routeProvider
-            .when('/', {
-                templateUrl : 'pages/home.html',
-                controller : 'mainCtrl'
-            })
-            .when('/about', {
-                templateUrl : 'pages/about.html',
-                controller : 'aboutCtrl'
-            })
-            .when('/contact', {
-                templateUrl : 'pages/contact.html',
-                controller : 'contactCtrl'
-            });
-    
-        $locationProvider.html5Mode(true);
+      $routeProvider
+          .when('/', {
+              templateUrl : 'pages/home.html',
+              controller : 'mainCtrl'
+          })
+          .when('/about', {
+              templateUrl : 'pages/about.html',
+              controller : 'aboutCtrl'
+          })
+          .when('/contact', {
+              templateUrl : 'pages/contact.html',
+              controller : 'contactCtrl'
+          });
+          $locationProvider.html5Mode(true);
     });
 
 Pretty Links
 If you click your links and they no longer work, you may have to swap out the fragment URLs for pretty urls. 
 
 Replace:
-<ul>
-     <li><a href="#/"> Home </li>
-     <li><a href="#about"> About </li>
-     <li><a href="#contact"> Contact </li>
-</ul>
+
+    <ul>
+         <li><a href="#/"> Home </li>
+         <li><a href="#about"> About </li>
+         <li><a href="#contact"> Contact </li>
+    </ul>
 
 with:
-<ul>
-     <li><a href="/"> Home </li>
-     <li><a href="/about"> About </li>
-     <li><a href="/contact"> Contact </li>
-</ul>
+
+    <ul>
+         <li><a href="/"> Home </li>
+         <li><a href="/about"> About </li>
+         <li><a href="/contact"> Contact </li>
+    </ul>
 
 Now click around, and your urls should be pretty! 
 
