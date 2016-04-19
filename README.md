@@ -101,7 +101,7 @@ var app = angular.module('myApp', ['ngRoute']);
 
 ##Controllers
 We’re going to make one controller for each page. Instead of wiring the controllers up using ng-controller, we’ll use our routes configuration to do it. We’ll get to that afterwards.
-
+    <code>
     app.controller(‘MainController’, function($scope) {
         $scope.message = 'Welcome to the home page!';
     });
@@ -113,6 +113,7 @@ We’re going to make one controller for each page. Instead of wiring the contro
     app.controller('contactCtrl', function($scope) {
         $scope.message = 'Welcome to the contact page!';
     });
+    </code>
 
 ##app.config
 And finally, to get everything working together we’ll use app.config.
